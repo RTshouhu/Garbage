@@ -4,7 +4,7 @@ package com.android.xjf.utils;
 public class Common {
 	
 	/**
-	 * 将数字转为带 , 分段的字条串
+	 * 将数字转为带 , 分段的字条串cdsfcdsfcdsfcdsfcdsfcs
 	 * */
     public static String formatString(String str) {
         int i = str.length();
