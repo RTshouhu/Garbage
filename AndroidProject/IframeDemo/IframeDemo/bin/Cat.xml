@@ -1,0 +1,441 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cat</name>
+    </assembly>
+    <members>
+        <member name="T:Com.Dianping.Cat.Configuration.ClientConfig">
+            <summary>
+              Cat客户端配置
+            </summary>
+        </member>
+        <member name="P:Com.Dianping.Cat.Configuration.ClientConfig.DevMode">
+            <summary>
+              是否是开发模式
+            </summary>
+        </member>
+        <member name="P:Com.Dianping.Cat.Configuration.ClientConfig.Servers">
+            <summary>
+              Cat日志服务器，可以有多个
+            </summary>
+        </member>
+        <member name="T:Com.Dianping.Cat.Configuration.Domain">
+            <summary>
+              描述当前系统的情况
+            </summary>
+        </member>
+        <member name="P:Com.Dianping.Cat.Configuration.Domain.Id">
+            <summary>
+              当前系统的标识
+            </summary>
+        </member>
+        <member name="P:Com.Dianping.Cat.Configuration.Domain.Enabled">
+            <summary>
+              Cat日志是否开启，默认关闭
+            </summary>
+        </member>
+        <member name="T:Com.Dianping.Cat.Configuration.Server">
+            <summary>
+              描述记录当前系统日志的目标Cat服务器
+            </summary>
+        </member>
+        <member name="P:Com.Dianping.Cat.Configuration.Server.Ip">
+            <summary>
+              Cat服务器IP
+            </summary>
+        </member>
+        <member name="P:Com.Dianping.Cat.Configuration.Server.Port">
+            <summary>
+              Cat服务器端口
+            </summary>
+        </member>
+        <member name="P:Com.Dianping.Cat.Configuration.Server.Enabled">
+            <summary>
+              Cat服务器是否有效，默认有效
+            </summary>
+        </member>
+        <member name="T:Com.Dianping.Cat.Util.Logger">
+            <summary>
+              简单记录Cat客户端的启动日志
+            </summary>
+        </member>
+        <member name="M:Com.Dianping.Cat.Util.Logger.Initialize(System.String)">
+            <summary>
+              初始化
+            </summary>
+            <param name="logFile"> </param>
+        </member>
+        <member name="T:Com.Dianping.Cat.Message.IEvent">
+            <summary>
+              <p>
+                <c>Event</c>
+                is used to log anything interesting happens at a specific
+                time. Such as an exception thrown, a review added by user, a new user
+                registered, an user logged into the system etc.</p> <p>However, if it could be failure, or last for a long time, such as a remote
+                                                                      API call, database call or search engine call etc. It should be logged as a
+                                                                      <c>Transaction</c>
+                                                                    </p> <p>All CAT message will be constructed as a message tree and send to back-end
+                                                                           for further analysis, and for monitoring. Only
+                                                                           <c>Transaction</c>
+                                                                           can
+                                                                           be a tree node, all other message will be the tree leaf.?The transaction
+                                                                           without other messages nested is an atomic transaction.</p>
+            </summary>
+        </member>
+        <member name="T:Com.Dianping.Cat.Message.IMessage">
+            <p>
+            Message represents data collected during application runtime. It will be sent
+            to back-end system asynchronous for further processing.
+            </p>
+            
+            <p>
+            Super interface of <code>Event</code>, <code>Heartbeat</code> and
+            <code>Transaction</code>.
+            </p>
+            
+            @see Event, Heartbeat, Transaction
+            @author Frankie Wu
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Com.Dianping.Cat.Message.IMessage.AddData(System.String)" -->
+        <member name="M:Com.Dianping.Cat.Message.IMessage.AddData(System.String,System.Object)">
+            add one key-value pair to the message.
+            
+            @param key
+            @param value
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.IMessage.Complete">
+            Complete the message construction.
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.IMessage.IsCompleted">
+            If the complete() method was called or not.
+            
+            @return true means the complete() method was called, false otherwise.
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.IMessage.IsSuccess">
+            @return
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.IMessage.SetStatus(System.Exception)">
+            Set the message status with exception class name.
+            
+            @param e
+                      exception.
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.IMessage.Data">
+            @return key value pairs data
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.IMessage.Name">
+            Message name.
+            
+            @return message name
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.IMessage.Status">
+            Get the message status.
+            
+            @return message status. "0" means success, otherwise error code.
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.IMessage.Timestamp">
+            The time stamp the message was created.
+            
+            @return message creation time stamp in milliseconds
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.IMessage.Type">
+            Message type.
+            
+            <p>
+            Typical message types are:
+            <ul>
+            <li>URL: maps to one method of an action</li>
+            <li>Service: maps to one method of service call</li>
+            <li>Search: maps to one method of search call</li>
+            <li>SQL: maps to one SQL statement</li>
+            <li>Cache: maps to one cache access</li>
+            <li>Error: maps to java.lang.Throwable (java.lang.Exception and java.lang.Error)</li>
+            </ul>
+            </p>
+            
+            @return message type
+        </member>
+        <member name="T:Com.Dianping.Cat.Message.IHeartbeat">
+            <summary>
+              <p>
+                <c>Heartbeat</c>
+                is used to log data that happens in a regular
+                intervals, for example once per second, such as system load, CPU percentage,
+                memory usage, thread pool statistics, cache hit/miss rate, service manifest
+                etc., and even some configuration could be carried by
+                <c>Heartbeat</c>
+                .
+                There could be some good use cases, for example health checker and load
+                balancer, that make good use of it.</p> <p>
+                                                          <c>Heartbeat</c>
+                                                          should never be used per request since the request is
+                                                          not regular predictable, instead it could be logged in a daemon background
+                                                          thread, or something like a Timer.</p> <p>All CAT message will be constructed as a message tree and send to back-end
+                                                                                                   for further analysis, and for monitoring. Only
+                                                                                                   <c>Transaction</c>
+                                                                                                   can
+                                                                                                   be a tree node, all other message will be the tree leaf.?The transaction
+                                                                                                   without other messages nested is an atomic transaction.</p>
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Com.Dianping.Cat.Message.Spi.IMessageProducer" -->
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageProducer.LogError(System.Exception)">
+            <summary>
+              Log an error.
+            </summary>
+            <param name="cause"> root cause exception </param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Com.Dianping.Cat.Message.Spi.IMessageProducer.LogEvent(System.String,System.String,System.String,System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:Com.Dianping.Cat.Message.Spi.IMessageProducer.LogHeartbeat(System.String,System.String,System.String,System.String)" -->
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageProducer.NewEvent(System.String,System.String)">
+            <summary>
+              Create a new event with given type and name.
+            </summary>
+            <param name="type"> event type </param>
+            <param name="name"> event name </param>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageProducer.NewHeartbeat(System.String,System.String)">
+            <summary>
+              Create a new heartbeat with given type and name.
+            </summary>
+            <param name="type"> heartbeat type </param>
+            <param name="name"> heartbeat name </param>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageProducer.NewTransaction(System.String,System.String)">
+            <summary>
+              Create a new transaction with given type and name.
+            </summary>
+            <param name="type"> transaction type </param>
+            <param name="name"> transaction name </param>
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.Internals.AbstractMessage.TimestampInMicros">
+            <summary>
+              其实是Ticks除以10
+            </summary>
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.Internals.AbstractMessage.Timestamp">
+            <summary>
+              其实是Ticks除以10000
+            </summary>
+        </member>
+        <member name="T:Com.Dianping.Cat.Message.Spi.IMessageManager">
+            <summary>
+              Message manager to help build CAT message. <p>Notes: This method is reserved for internal usage only. Application developer
+                                                           should never call this method directly.</p>
+            </summary>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageManager.Add(Com.Dianping.Cat.Message.IMessage)">
+            <summary>
+              用于添加Event或者Heartbeat到peek transaction或者到根 如果是添加到根，建议直接使用IMessageProducer中的LogError、LogEvent或LogHeartbeat方法
+            </summary>
+            <param name="message"> </param>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageManager.InitializeClient(Com.Dianping.Cat.Configuration.ClientConfig)">
+            <summary>
+              Initialize CAT client with given CAT configuration.
+            </summary>
+            <param name="config"> CAT configuration </param>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageManager.Reset">
+            <summary>
+              Do cleanup for current thread environment in order to release resources in thread local objects.
+            </summary>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageManager.HasContext">
+            <summary>
+              Check if the thread context is setup or not.
+            </summary>
+            <returns> true if the thread context is setup, false otherwise </returns>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageManager.Setup">
+            <summary>
+              Do setup for current thread environment in order to prepare thread local objects.
+            </summary>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageManager.Start(Com.Dianping.Cat.Message.ITransaction)">
+            <summary>
+              Be triggered when a new transaction starts, whatever it's the root transaction or nested transaction.
+            </summary>
+            <param name="transaction"> </param>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.IMessageManager.End(Com.Dianping.Cat.Message.ITransaction)">
+            <summary>
+              Be triggered when a transaction ends, whatever it's the root transaction or nested transaction. However, if it's the root transaction then it will be flushed to back-end CAT server asynchronously.
+            </summary>
+            <param name="transaction"> </param>
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.Spi.IMessageManager.ClientConfig">
+            <summary>
+              Return configuration for CAT client.
+            </summary>
+            <value> CAT configuration </value>
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.Spi.IMessageManager.PeekTransaction">
+            <summary>
+              Get peek transaction for current thread.
+            </summary>
+            <value> peek transaction for current thread, null if no transaction there. </value>
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.Spi.IMessageManager.ThreadLocalMessageTree">
+            <summary>
+              Get thread local message information.
+            </summary>
+            <value> message tree, null means current thread is not setup correctly. </value>
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.Spi.IMessageManager.CatEnabled">
+            <summary>
+              Check if CAT logging is enabled or disabled.
+            </summary>
+            <value> true if CAT is enabled </value>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.Internals.DefaultMessageManager.Context.Add(Com.Dianping.Cat.Message.Spi.Internals.DefaultMessageManager,Com.Dianping.Cat.Message.IMessage)">
+            <summary>
+              添加Event和Heartbeat
+            </summary>
+            <param name="manager"> </param>
+            <param name="message"> </param>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.Internals.DefaultMessageManager.Context.End(Com.Dianping.Cat.Message.Spi.Internals.DefaultMessageManager,Com.Dianping.Cat.Message.ITransaction)">
+            <summary>
+              return true means the transaction has been flushed.
+            </summary>
+            <param name="manager"> </param>
+            <param name="transaction"> </param>
+            <returns> true if message is flushed, false otherwise </returns>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.Internals.DefaultMessageManager.Context.PeekTransaction">
+            <summary>
+              返回stack的顶部对象
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.Internals.DefaultMessageManager.Context.Start(Com.Dianping.Cat.Message.Spi.Internals.DefaultMessageManager,Com.Dianping.Cat.Message.ITransaction)">
+            <summary>
+              添加transaction
+            </summary>
+            <param name="manager"> </param>
+            <param name="transaction"> </param>
+        </member>
+        <member name="T:Com.Dianping.Cat.Message.ITransaction">
+            <p>
+            <code>Transaction</code> is any interesting unit of work that takes time to
+            complete and may fail.
+            </p>
+            
+            <p>
+            Basically, all data access across the boundary needs to be logged as a
+            <code>Transaction</code> since it may fail and time consuming. For example,
+            URL request, disk IO, JDBC query, search query, HTTP request, 3rd party API
+            call etc.
+            </p>
+            
+            <p>
+            Sometime if A needs call B which is owned by another team, although A and B
+            are deployed together without any physical boundary. To make the ownership
+            clear, there could be some <code>Transaction</code> logged when A calls B.
+            </p>
+            
+            <p>
+            Most of <code>Transaction</code> should be logged in the infrastructure level
+            or framework level, which is transparent to the application.
+            </p>
+            
+            <p>
+            All CAT message will be constructed as a message tree and send to back-end
+            for further analysis, and for monitoring. Only <code>Transaction</code> can
+            be a tree node, all other message will be the tree leaf.　The transaction
+            without other messages nested is an atomic transaction.
+            </p>
+            
+            @author Frankie Wu
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.ITransaction.AddChild(Com.Dianping.Cat.Message.IMessage)">
+            Add one nested child message to current transaction.
+            
+            @param message
+                      to be added
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.ITransaction.HasChildren">
+            Has children or not. An atomic transaction does not have any children
+            message.
+            
+            @return true if child exists, else false.
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.ITransaction.Children">
+            Get all children message within current transaction.
+            
+            <p>
+            Typically, a <code>Transaction</code> can nest other
+            <code>Transaction</code>s, <code>Event</code>s and <code>Heartbeat</code>
+            s, while an <code>Event</code> or <code>Heartbeat</code> can't nest other
+            messages.
+            </p>
+            
+            @return all children messages, empty if there is no nested children.
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.ITransaction.DurationInMicros">
+            How long the transaction took from construction to complete. Time unit is
+            microsecond.
+            
+            @return duration time in microsecond
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.ITransaction.DurationInMillis">
+            How long the transaction took from construction to complete. Time unit is
+            millisecond.
+            
+            @return duration time in millisecond
+        </member>
+        <member name="P:Com.Dianping.Cat.Message.ITransaction.Standalone">
+            Check if the transaction is stand-alone or belongs to another one.
+            
+            @return true if it's an root transaction.
+        </member>
+        <member name="T:Com.Dianping.Cat.Message.Spi.Internals.MessageIdFactory">
+            <summary>
+              根据域名（配置指定的），系统IP（自动解析的，16进制字符串），时间戳（1970年到当前的小时数）和自增编号组成
+            </summary>
+        </member>
+        <member name="T:Com.Dianping.Cat.Util.MilliSecondTimer">
+            <summary>
+              This timer provides milli-second precise system time.
+            </summary>
+        </member>
+        <member name="M:Com.Dianping.Cat.Util.HighResTicksProvider.GetTickCount">
+            <summary>
+              获得当前时间戳，十分之一微秒（100纳秒，和 DateTime.Now.Ticks 刻度一样）
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.Codec.ChannelBuffer.BytesBefore(System.Byte)">
+            <summary>
+              从当前位置到目标字符第一次出现的位置有多少字节?
+            </summary>
+            <param name="separator"> </param>
+            <returns> </returns>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.Codec.ChannelBuffer.SetInt(System.Int32,System.Int32)">
+            <summary>
+              在流的相应位置插入一个整数的字节(覆盖？)
+            </summary>
+            <param name="index"> </param>
+            <param name="i"> </param>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.Codec.ChannelBuffer.ToString">
+            <summary>
+              从当前位置到结尾的字节数组的字符串表示
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="T:Com.Dianping.Cat.Message.Spi.Codec.PlainTextMessageCodec.DateHelper">
+            <summary>
+              Thread safe date helper class. DateFormat is NOT thread safe.
+            </summary>
+        </member>
+        <member name="M:Com.Dianping.Cat.Message.Spi.Internals.StatusUpdateTask.GetPhisicalMemory">
+            <summary>
+              获取系统内存大小
+            </summary>
+            <returns> 内存大小(单位M) </returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,15 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>   //生成的文件格式，文件名称同文本模板名称相同
+
+//正文
+<# var user_obj = new string [] {"Name", "Age", "Education"}; #>
+class AutoCreate
+{
+<# for(int i= 0; i< user_obj.Length ; i ++){ #>
+  public static string <#= user_obj[i] #>;
+<# }#>
+}

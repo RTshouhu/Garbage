@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Remote";
+    Layout = "~/Views/Share/Layout.cshtml";
+}
+
+<h2>Remote</h2>
+<p>我是三方应用，我的域是:www.remote.com:8012</p>
+<iframe id="frameC" name="frameC"></iframe>
+<script>
+    window.onload = function () {
+        document.getElementById('frameC').src = "http://www.local.com:8011/local/local/LocalProxy?content=" + encodeURI("远程数据");
+    }
+</script>

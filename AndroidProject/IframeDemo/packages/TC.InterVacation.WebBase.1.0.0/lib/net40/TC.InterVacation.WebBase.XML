@@ -1,0 +1,641 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TC.InterVacation.WebBase</name>
+    </assembly>
+    <members>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.Json(System.Object)">
+            <summary>JsonResult</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.MessageBox(System.String)">
+            <summary>右下角提示信息</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.MessageErrBox(System.String)">
+            <summary>右下角提示信息</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.MessageInfoBox(System.String)">
+            <summary>
+            中间消息提示框,同alert
+            </summary>
+            <param name="message">消息</param>
+            <returns>中间消息提示框</returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.ShowUi(System.String)">
+            <summary>显示ui信息</summary>
+            <param name="con">ui信息,如$('#delMsg')</param>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.CloseFancybox(System.String)">
+            <summary>关闭弹出窗口</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.AddJs(System.String)">
+            <summary>向页面注入js代码</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.IsGet">
+            <summary>是否是get请求</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.IsPost">
+            <summary>是否是post请求</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.IsAjax">
+            <summary>是否是Ajax请求</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.GetQueryString(System.String,System.String)">
+            <summary> 获得提交值</summary>
+            <param name="key">键</param>
+            <param name="defaultValue">默认值</param>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.AdminControllerBase.GetQueryString(System.String)">
+            <summary>获得查询字符串中的值</summary>
+            <param name="key">键</param>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.AdminControllerBase.Pager">
+            <summary>翻页DataPage</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.AdminControllerBase.UserInfoAndMenu">
+            <summary>用户及菜单数据</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.AdminControllerBase.BasePath">
+            <summary>得到网站基础url</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.AdminControllerBase.IsActiveManage">
+            <summary>
+            是否是活动管理员
+            </summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.AdminWebViewPageBase`1.UserInfoAndMenu">
+            <summary>当前用户信息及菜单</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.AdminWebViewPageBase`1.CurrentMenu">
+            <summary>当前菜单</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.AdminWebViewPageBase`1.BasePath">
+            <summary>得到网站基础url</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.AdminWebViewPageBase`1.ActionName">
+            <summary>得到ActionName</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.AdminWebViewPageBase`1.IsActiveManage">
+            <summary>
+            是否是活动管理员
+            </summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.CheckLoginFilter">
+            <summary> 通行证登录验证过滤器</summary>
+        </member>
+        <member name="F:TC.InterVacation.WebBase.CheckLoginFilter.MenuRole">
+            <summary>需要配置菜单才可以访问</summary>
+        </member>
+        <member name="F:TC.InterVacation.WebBase.CheckLoginFilter.PublicRole">
+            <summary>公用,不需要登录即可访问,如登录页面</summary>
+        </member>
+        <member name="F:TC.InterVacation.WebBase.CheckLoginFilter.LoginRole">
+            <summary>要登录才可以访问</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.CheckLoginFilter.RedirectOrShow(System.Web.Mvc.AuthorizationContext,System.String,System.String)">
+            <summary>重定向或显示信息</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.CheckLoginFilter.OnAuthorization(System.Web.Mvc.AuthorizationContext)">
+            <summary>验证登录</summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.LoggingAttribute">
+            <summary>页面执行时间</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.LoggingAttribute.SavePageLoad">
+            <summary>保险页面访问记录的队列数据到数据库</summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.CacheFilterAttribute">
+            <summary>客户端缓存</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.CacheFilterAttribute.Duration">
+            <summary>缓存时间,默认10s</summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.ForbidInjectAttribute">
+            <summary>
+            禁止刷新注入(只能防止IE)
+            </summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.CompressFilter">
+            <summary>压缩</summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.MenuModel">
+            <summary> 系统菜单实体</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuModel.Name">
+            <summary> 英文名称</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuModel.Title">
+            <summary> 标题</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuModel.Url">
+            <summary> Url地址</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuModel.OrderNo">
+            <summary> 序号</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuModel.Mtype">
+            <summary>类型</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuModel.state">
+            <summary>状态</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuModel.iconCls">
+            <summary>图标</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuModel.children">
+            <summary>子菜单实体</summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.MenuRequestBase">
+            <summary> 基类</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.MenuRequestBase.ErrorMessage(System.String)">
+            <summary> 错误信息</summary>
+            <param name="errorNo">错误代码</param>
+            <returns>错误具体的信息</returns>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequestBase.ServiceUrl">
+            <summary> 服务地址</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequestBase.Service">
+            <summary> 服务名称</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequestBase.ProjCode">
+            <summary> 项目代码</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequestBase.UserId">
+            <summary> 用户Id</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequestBase.JobNumber">
+            <summary> 工号</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequestBase.Pwd">
+            <summary> 密码</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequestBase.Ucom">
+            <summary> ucom节点</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequest.PostData">
+            <summary> 提交参数集合</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequest.PostUserIdData">
+            <summary> 提交参数集合</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuRequest.IsRemember">
+            <summary> 记住用户名和密码</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuResponseModel.UserEntity">
+            <summary>用户实体</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuResponseModel.MenuEntity">
+            <summary>菜单实体 </summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuResponseModel.MenuUrl">
+            <summary>所有的菜单</summary>
+        </member>
+        <member name="F:TC.InterVacation.WebBase.MenuService.Projcode">
+            <summary>项目代码</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.MenuService.GetMenuUrl(System.String)">
+            <summary> 得到菜单需要判断权限的url</summary>
+            <param name="rawUrl">Request.RawUrl,不包含域名的url</param>
+            <returns>需要判断权限的url</returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.MenuService.GetMenuAndUserInfo(TC.InterVacation.WebBase.MenuRequest,TC.InterVacation.WebBase.ErrorMessage@)">
+            <summary>获取用户和菜单信息</summary>
+            <param name="request">请求字段</param>
+            <param name="message">错误信息</param>
+            <returns>响应信息</returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.MenuService.GetUserInfo(TC.InterVacation.WebBase.MenuRequest,TC.InterVacation.WebBase.ErrorMessage@)">
+            <summary> 获取用户信息</summary>
+            <param name="request">请求字段</param>
+            <param name="message">错误信息</param>
+            <returns>响应信息</returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.MenuService.GetMenu(System.Xml.XmlElement,TC.InterVacation.WebBase.MenuResponseModel)">
+            <summary> 解析menu字段</summary>
+            <param name="nodeList">xml节点</param>
+            <returns>Menu实体列表</returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.MenuService.CheckUserInfo(System.String,System.Xml.XmlNodeList@,TC.InterVacation.WebBase.ErrorMessage@)">
+            <summary> 检查用户数据的正确性</summary>
+            <param name="item">查询字符</param>
+            <param name="message">错误的消息</param>
+            <param name="userList">用户信息</param>
+            <returns>数据元素树</returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.MenuService.CheckResult(System.String,TC.InterVacation.WebBase.ErrorMessage@)">
+            <summary> 检查用户数据的正确性</summary>
+            <param name="item">查询字符</param>
+            <param name="message">错误的消息</param>
+            <returns>数据元素树</returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.MenuService.Check(System.String,System.Xml.XmlNodeList@,TC.InterVacation.WebBase.ErrorMessage@,System.Xml.XmlNodeList@)">
+            <summary> 检查数据的正确性</summary>
+            <param name="item">查询字符</param>
+            <param name="message">错误的消息</param>
+            <param name="menuList">元素列表</param>
+            <param name="userList"></param>
+            <returns>数据元素树</returns>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.UserId">
+            <summary> 用户Id</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.OldUserId">
+            <summary> 度假平台用户Id</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.Name">
+            <summary> 用户名称</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.JobNumber">
+            <summary> 工号</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.Pwd">
+            <summary> 密码</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.Gender">
+            <summary> 性别</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.IdCard">
+            <summary> 身份证号</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.CrtTime">
+            <summary> 创建时间</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.MdfTime">
+            <summary> 修改时间</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.Enable">
+            <summary> 是否有效</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.Remark">
+            <summary> 备注</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.DepartId">
+            <summary> 老后台部门Id</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.MenuUserModel.DepartName">
+            <summary> 统一权限里的部门名称</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.RePage.RePaging(System.Web.Mvc.HtmlHelper,System.String,System.String,System.String)">
+            <summary>分页</summary>
+            <param name="refreshName">要刷新的控件ID</param>
+            <param name="postfix">后缀一个页面多个分页控件才需要传</param>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.NotEmpty(System.String)">
+            <summary>不能为空</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Number(System.String)">
+            <summary>整数验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Decimal(System.String)">
+            <summary>数字包含小数验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Min(System.Int32,System.String)">
+            <summary>不能小于最小值</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Max(System.Int32,System.String)">
+            <summary>不能大于最大值</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.NumThanBig(System.String,System.String)">
+            <summary>数字大于</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.NumThanSmall(System.String,System.String)">
+            <summary>数字小于</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Date(System.String)">
+            <summary>日期验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.DateThanBig(System.String,System.String)">
+            <summary>需要大于开始时间</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.DateThanSmall(System.String,System.String)">
+            <summary>需要小于开始时间</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Ajax(System.String,System.String)">
+            <summary>远程验证 使用post方式 根据远程返回的Boolen值进行验证 true:表示可以提交，不显示错误提示 false:表示不可以提交，显示错误提示</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.MinLength(System.Int32,System.String)">
+            <summary>长度不能小于</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.MaxLength(System.Int32,System.String)">
+            <summary>长度不能大于</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Length(System.Int32,System.Int32,System.String)">
+            <summary>验证长度在指定的区间内</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.CharCodeLength(System.Int32,System.String)">
+            <summary>Char最大长度</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Regex(System.String,System.String)">
+            <summary>正则验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.NotRegex(System.String,System.String)">
+            <summary>非 正则表达式，即不匹配此正则</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.AllChinese(System.String)">
+            <summary>中文</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.EqualTo(System.String,System.String)">
+            <summary>与另一个控件值是否相等</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.NotEqualTo(System.String,System.String)">
+            <summary>不能与另一个控件相等</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Email(System.String)">
+            <summary>是否为Email格式</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.IDCardNo(System.String)">
+            <summary>身份证号码验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.Url(System.String)">
+            <summary>网址验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.IP(System.String)">
+            <summary>检测是否为IP地址</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.NoHtml(System.String)">
+            <summary>不包含Html代码</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.NoChinese(System.String)">
+            <summary>不能包含中文或全角字符验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.XmlString(System.String)">
+            <summary>判断是否是标准字符 如果包含非标准字符 报错</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.IsPostcode(System.String)">
+            <summary>邮政编码验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.IUniValidate.IsExchangeRate(System.String)">
+            <summary>外币汇率验证</summary>
+        </member>
+        <member name="F:TC.InterVacation.WebBase.UniValidate.ValidE">
+            <summary> event,服务端验证及产生客户端验证js代码</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.AddJs(System.String,System.String,System.String)">
+            <summary>增加JSON叶子节点</summary>
+            <param name="type">验证类型</param>
+            <param name="typeValue">类型值</param>
+            <param name="message">错误提示消息</param>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.AddErrStr(System.String)">
+            <summary>添加服务端的错误信息</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.AddMarks(System.String)">
+            <summary>加两边双引号</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.NotEmpty(System.String)">
+            <summary>不能为空</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Number(System.String)">
+            <summary>Number 整数验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Decimal(System.String)">
+            <summary>Decimal 型数字验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Min(System.Int32,System.String)">
+            <summary>不能小于最小值</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Max(System.Int32,System.String)">
+            <summary>不能大于最大值</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Date(System.String)">
+            <summary>日期验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.DateThanBig(System.String,System.String)">
+            <summary>需要大于开始时间</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.DateThanSmall(System.String,System.String)">
+            <summary>需要小于开始时间</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Ajax(System.String,System.String)">
+            <summary>远程验证 使用post方式 根据远程返回的Boolen值进行验证 true:表示可以提交，不显示错误提示 false:表示不可以提交，显示错误提示</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.EqualTo(System.String,System.String)">
+            <summary>与另一个控件值是否相等</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.NotEqualTo(System.String,System.String)">
+            <summary>不能与另一个控件相等</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.NumThanBig(System.String,System.String)">
+            <summary>数字要大于或等于另外一个控件</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.NumThanSmall(System.String,System.String)">
+            <summary>数字要小于或等于另外一个控件</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.MinLength(System.Int32,System.String)">
+            <summary>长度不能小于</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.MaxLength(System.Int32,System.String)">
+            <summary>长度不能大于</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Length(System.Int32,System.Int32,System.String)">
+            <summary>验证长度在指定的区间内</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.CharCodeLength(System.Int32,System.String)">
+            <summary>Char最大长度</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Regex(System.String,System.String)">
+            <summary>正则验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.NotRegex(System.String,System.String)">
+            <summary>非 正则表达式，即不匹配此正则</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Email(System.String)">
+            <summary>是否为Email格式</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.IDCardNo(System.String)">
+            <summary>身份证号码验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.AllChinese(System.String)">
+            <summary>中文</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.Url(System.String)">
+            <summary>网址验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.IP(System.String)">
+            <summary>检测是否为IP地址</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.NoHtml(System.String)">
+            <summary>不包含Html代码</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.NoChinese(System.String)">
+            <summary>不能包含中文或全角字符验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.XmlString(System.String)">
+            <summary>判断是否是标准字符 如果包含非标准字符 报错</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.IsPostcode(System.String)">
+            <summary>邮政编码验证</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidate.IsExchangeRate(System.String)">
+            <summary>外币汇率验证</summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.UniValidateHelper">
+            <summary>验证类</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidateHelper.#ctor(System.String,System.Boolean)">
+            <summary> 验证辅助类 </summary>
+            <param name="pageName">作为缓存的Key以提交的form为准,地址重写或多form时使用,当显示页面与提交页面的中等不一样的时候,写提交页面的显示地址
+            ,不是提交地址如:Account/LogOn</param>
+            <param name="refresh"></param>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidateHelper.#ctor(System.Web.Routing.RouteData,System.Boolean)">
+            <summary> 验证辅助类</summary>
+            <param name="routaData">路由ViewContext.RouteData,用于产生页面名称如:Account/LogOn</param>
+            <param name="refresh">是否刷新</param>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidateHelper.Bind(System.String)">
+            <summary>开始控件验证</summary>
+            <param name="ctrName">要验证的控件ID</param>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidateHelper.BindFor``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>开始控件验证</summary>
+            <param name="expression">要验证的控件属性名:() => Model.xxxx</param>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidateHelper.ClearAll">
+            <summary>清除所有缓存</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidateHelper.CheckAll(System.Web.Mvc.Controller)">
+            <summary>验证所有,Controllers里调用</summary>
+            <param name="contr">Controller自己,一般为this</param>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidateHelper.ValidEnd(System.Boolean)">
+            <summary>最后调用,可以放母板里</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UniValidateHelper.GetPageName(System.Web.Routing.RouteData)">
+            <summary>得到页面名称</summary>
+            <param name="rData">路由</param>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UniValidateHelper.FormID">
+            <summary>多form里设置要验证的ID,单form不用设置</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UniValidateHelper.Onfocusout">
+            <summary>默认false：只有提交时才验证,true：只要失去焦点便验证 </summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UniValidateHelper.OnKeyupCheck">
+            <summary>默认true：按键弹起时是否检测</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UniValidateHelper.FocusCleanup">
+            <summary>获得焦点时清除错误</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UniValidateHelper.ShowErrorTo">
+            <summary>将错误信息显示在指定位置</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UniValidateHelper.ErrorPlacement">
+            <summary>将每一个错误信息显示在指定位置,此值要设置成显示错误的classname</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UniValidateHelper.ErrorByJs">
+            <summary>将每一个错误信息显示在指定位置
+            ,填写function(error, element){}里面的内容即可如:error.appendTo(element.next('.err')),输出到下面的样式为err容器里</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserModel.UserId">
+            <summary> 用户Id</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserModel.Name">
+            <summary> 用户名称</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserModel.JobNumber">
+            <summary> 工号</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserModel.Enabled">
+            <summary>是否有效</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserModel.Email">
+            <summary>电子邮箱地址</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserModel.HotelUserId">
+            <summary>酒店用户 ID(酒店项目专属)</summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.UserRequestBase">
+            <summary> 基类</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UserRequestBase.ErrorMessage(System.String)">
+            <summary> 错误信息</summary>
+            <param name="errorNo">错误代码</param>
+            <returns>错误具体的信息</returns>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRequestBase.ServiceUrl">
+            <summary> 服务地址</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRequestBase.Service">
+            <summary> 服务名称</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRequestBase.ProjCode">
+            <summary> 项目代码</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRequestBase.RoleId">
+            <summary> 角色组Id</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRequestBase.Ucom">
+            <summary> ucom节点</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRequest.PostRoleIdData">
+            <summary> 提交参数集合</summary>
+        </member>
+        <member name="T:TC.InterVacation.WebBase.ErrorMessage">
+            错误数据
+            
+        </member>
+        <member name="F:TC.InterVacation.WebBase.ErrorMessage._no">
+            <summary>错误编号</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.ErrorMessage.ErrorList">
+            <summary> 错误列表</summary>
+            <returns>错误列表</returns>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.ErrorMessage.Result">
+            <summary>结果</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserResponseModel.UserEntity">
+            <summary>用户实体</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRoleListModel.UserRoleList">
+            <summary>用户实体</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRole.RoleId">
+            <summary>角色Id</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRole.RoleName">
+            <summary> 角色名称</summary>
+        </member>
+        <member name="P:TC.InterVacation.WebBase.UserRole.ProjectId">
+            <summary>项目ID</summary>
+        </member>
+        <member name="F:TC.InterVacation.WebBase.UserService.Projcode">
+            <summary>项目代码</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UserService.Check(System.String,System.Xml.XmlNodeList@,TC.InterVacation.WebBase.ErrorMessage@)">
+            <summary> 检查数据的正确性</summary>
+            <param name="item">查询字符</param>
+            <param name="message">错误的消息</param>
+            <param name="userList">元素列表</param>
+            <returns>数据元素树</returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UserService.Getuserlistbyrole(System.Int32)">
+            <summary> 根据角色id获取角色下人员</summary>
+            <param name="roleid">角色id</param>
+            <returns></returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UserService.Getuserlistbyrole(TC.InterVacation.WebBase.UserRequest,TC.InterVacation.WebBase.ErrorMessage@)">
+            <summary>获取用户信息</summary>
+            <param name="request">请求字段</param>
+            <param name="message">错误信息</param>
+            <returns>响应信息</returns>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UserService.GetUserRoleListByUserId(System.Int32)">
+            <summary>根据用户ID获取用户角色列表</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UserService.GetUserRoleListByUserId(TC.InterVacation.WebBase.UserRequest,TC.InterVacation.WebBase.ErrorMessage@)">
+            <summary>根据用户ID获取用户角色列表</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UserService.AddUserToRole(System.String,System.String)">
+            <summary>添加用户角色</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UserService.AddUserToRole(System.String,System.Collections.Generic.List{System.String})">
+            <summary>添加用户角色</summary>
+        </member>
+        <member name="M:TC.InterVacation.WebBase.UserService.CheckResult(System.String)">
+            <summary>验证结果</summary>
+        </member>
+    </members>
+</doc>

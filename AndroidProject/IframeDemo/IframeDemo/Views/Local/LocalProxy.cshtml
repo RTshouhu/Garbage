@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "proxy";
+    Layout = "~/Views/Share/Layout.cshtml";
+}
+
+<h2>proxy</h2>
+<script>
+    window.onload = function () {
+        var text = window.location.href.split('=')[1];
+        parent.parent.dosome(text);
+    }
+</script>
